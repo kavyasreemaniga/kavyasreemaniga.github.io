@@ -3,7 +3,7 @@ export const profile = {
   role: "Senior Data Engineer",
   blurb:
     "6+ years engineering production data platforms across GCP, AWS, and Azure — from real-time CDC pipelines and medallion architectures to dbt transformation layers and AI-powered workflows.",
-  location: "Baltimore, MD",
+  location: "Philadelphia, PA",
   email: "kavyasreede@gmail.com",
   linkedin: "https://linkedin.com/in/kavyasreede",
   github: "https://github.com/kavyasreemaniga",
@@ -37,7 +37,7 @@ export const experience = [
       "Built real-time CDC pipelines using Pub/Sub and Dataflow ingesting PostgreSQL and MongoDB into BigQuery",
       "Implemented dbt transformation layer with 20+ modular models, cutting debugging time by 40%",
       "Developed Airflow DAGs from scratch achieving 99%+ pipeline SLA adherence",
-      "Integrated Claude API for AI-powered data quality and enrichment workflows",
+      "Integrated Claude API and LangGraph for AI-powered data quality and enrichment workflows",
     ],
   },
   {
@@ -61,26 +61,26 @@ export const experience = [
       "Led end-to-end migration of clinical and claims data to AWS Redshift, processing 200GB+ daily",
       "Integrated Epic EHR data pipelines, reducing clinical reporting latency by 40%",
       "Enforced HIPAA compliance through IAM policies, RBAC, encryption, and audit-ready data lineage",
-      "Built Power BI dashboards for provider performance metrics and patient outcomes reporting",
+      "Built Tableau and Power BI dashboards for provider performance metrics and patient outcomes reporting",
     ],
   },
 ];
 
 export const projects = [
   {
-    title: "Healthcare Analytics dbt Platform",
+    title: "SDOH Community Health Analytics Platform",
     category: "Analytics Engineering",
     featured: true,
     description:
-      "Production-grade healthcare analytics pipeline using Synthea FHIR R4 and CMS SynPUF data. Implements Medallion architecture in Snowflake with dbt, SCD Type 2 patient spine, ICD-9/ICD-10 crosswalk handling, and data contracts — designed to demonstrate senior-level patterns end-to-end.",
-    tech: ["dbt", "Snowflake", "Airflow", "Python", "GitHub Actions", "Streamlit"],
+      "End-to-end SDOH analytics platform integrating Synthea FHIR R4 clinical data with PRAPARE screening results and community program referrals. Tracks intervention effectiveness and health equity outcomes across 1,100+ synthetic patients using a Medallion dbt architecture on PostgreSQL.",
+    tech: ["dbt", "PostgreSQL", "Python", "Synthea FHIR", "Tableau", "SQL"],
     github: "https://github.com/kavyasreemaniga/sdoh-community-health-analytics",
     demo: "",
     highlights: [
-      "Patient spine with SCD Type 2 history tracking and ICD-9/ICD-10 crosswalk normalization",
-      "25+ dbt models with source freshness checks, schema tests, and data contracts",
-      "CI/CD: SQLFluff linting on PRs, full dbt build on merge via GitHub Actions",
-      "Streamlit dashboard for readmission rates, cost analytics, and population health KPIs",
+      "Bronze → Staging → Marts dbt pipeline with automated unique, not-null, and referential integrity tests",
+      "PRAPARE 9-domain SDOH risk scoring (0–10 scale) across 1,725 screening records",
+      "Health equity dashboard model surfacing demographic disparities in access and outcomes",
+      "ICD-10 Z-code social determinants, Epic FHIR-compatible data, HIPAA-safe synthetic data only",
     ],
   },
   {
@@ -111,6 +111,21 @@ export const projects = [
       "50% reduction in manual processing across 15+ regulated financial pipelines",
       "Layered transformation with governance checkpoints at each medallion tier",
       "Stakeholder-facing Power BI dashboards for Finance and Sales teams",
+    ],
+  },
+  {
+    title: "AI-Powered Data Quality Workflows",
+    category: "AI / Data Engineering",
+    featured: false,
+    description:
+      "LangGraph-orchestrated agents integrated with the Claude API to automate data quality triage, anomaly explanation, and pipeline remediation suggestions — reducing mean time to resolution for data incidents.",
+    tech: ["LangGraph", "Claude API", "Python", "Airflow", "BigQuery"],
+    github: "",
+    demo: "",
+    highlights: [
+      "LangGraph agent graph for multi-step anomaly investigation and root cause analysis",
+      "Claude API integration for natural-language incident summaries surfaced in Slack",
+      "Automated remediation suggestions reducing on-call response time",
     ],
   },
 ];

@@ -4,13 +4,21 @@ import { experience, profile, projects, stats, techStack } from "../data/portfol
 
 const featuredRepos = [
   {
-    name: "healthcare-analytics-dbt",
-    description: "End-to-end healthcare analytics platform — Snowflake, dbt Medallion architecture, Airflow, Synthea FHIR R4, SCD Type 2 patient spine.",
+    name: "sdoh-community-health-analytics",
+    description: "End-to-end SDOH analytics platform — Synthea FHIR R4, PRAPARE screening data, dbt Medallion architecture on PostgreSQL, health equity dashboards.",
     lang: "Python",
     langColor: "#3572A5",
-    topics: ["dbt", "Snowflake", "Airflow"],
+    topics: ["dbt", "PostgreSQL", "FHIR"],
     url: "https://github.com/kavyasreemaniga/sdoh-community-health-analytics",
-  }
+  },
+  {
+    name: "kavyasreemaniga.github.io",
+    description: "This portfolio — React 19, Vite, React Router, custom CSS design system. Deployed via GitHub Actions to GitHub Pages.",
+    lang: "JavaScript",
+    langColor: "#f1e05a",
+    topics: ["React", "Vite"],
+    url: "https://github.com/kavyasreemaniga/kavyasreemaniga.github.io",
+  },
 ];
 
 export default function HomePage() {
