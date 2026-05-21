@@ -79,7 +79,6 @@ export default function ResumePage() {
             }}
           >
             <strong>H1B Transfer</strong><br />
-            No visa processing delay. Cost advantage to employer — no new cap required.
           </div>
         </div>
       </div>
@@ -176,7 +175,7 @@ export default function ResumePage() {
           <h2>Let's connect</h2>
           <p>
             Open to Senior Data Engineer roles in healthcare, fintech, and tech.
-            H1B transfer — no visa processing delay.
+            H1B Transfer
           </p>
         </div>
         <div className="contact-links">
