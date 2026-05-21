@@ -48,11 +48,6 @@ export default function ResumePage() {
                 GitHub ↗
               </a>
             </p>
-            <p>
-              <a href={profile.portfolio} target="_blank" rel="noopener noreferrer" style={{ color: "var(--accent)" }}>
-                Portfolio ↗
-              </a>
-            </p>
           </div>
         </div>
 
@@ -63,14 +58,7 @@ export default function ResumePage() {
             className="solid-btn no-print"
             style={{ justifyContent: "center" }}
           >
-            <Download size={16} /> Download PDF
-          </a>
-          <a
-            href={`mailto:${profile.email}`}
-            className="ghost-btn no-print"
-            style={{ justifyContent: "center" }}
-          >
-            <Mail size={16} /> Get in Touch
+            <Download size={16} /> Download Resume
           </a>
           <div
             style={{
@@ -84,7 +72,6 @@ export default function ResumePage() {
             }}
           >
             <strong>H1B Transfer</strong><br />
-            No visa processing delay. Cost advantage to employer — no new cap required.
           </div>
         </div>
       </div>
@@ -181,7 +168,7 @@ export default function ResumePage() {
           <h2>Let's connect</h2>
           <p>
             Open to Senior Data Engineer roles in healthcare, fintech, and tech.
-            H1B transfer — no visa processing delay.
+            H1B Transfer
           </p>
         </div>
         <div className="contact-links">
