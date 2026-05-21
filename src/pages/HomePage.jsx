@@ -1,6 +1,5 @@
 import { ExternalLink, Github, Linkedin, Mail } from "lucide-react";
 import { Link } from "react-router-dom";
-import heroImage from "../assets/hero.png";
 import { experience, profile, projects, stats, techStack } from "../data/portfolioData";
 
 const featuredRepos = [
@@ -10,16 +9,8 @@ const featuredRepos = [
     lang: "Python",
     langColor: "#3572A5",
     topics: ["dbt", "Snowflake", "Airflow"],
-    url: "https://github.com/kavyasreemaniga/healthcare-analytics-dbt",
-  },
-  {
-    name: "kavyasreemaniga.github.io",
-    description: "This portfolio — React 19, Vite, React Router, custom CSS design system. Deployed via GitHub Actions to GitHub Pages.",
-    lang: "JavaScript",
-    langColor: "#f1e05a",
-    topics: ["React", "Vite"],
-    url: "https://github.com/kavyasreemaniga/kavyasreemaniga.github.io",
-  },
+    url: "https://github.com/kavyasreemaniga/sdoh-community-health-analytics",
+  }
 ];
 
 export default function HomePage() {
@@ -28,9 +19,9 @@ export default function HomePage() {
   return (
     <main className="page-wrap">
       {/* ── HERO ── */}
-      <section className="hero hero-home" style={{ "--hero-image": `url(${heroImage})` }}>
+      <section className="hero hero-home">
         <div className="hero-copy">
-          <p className="eyebrow">Senior Data Engineer</p>
+          <p className="eyebrow" style={{ fontSize: "13px", letterSpacing: "0.12em" }}>Senior Data Engineer</p>
           <h1>
             Building data<br />
             platforms that <em>scale.</em>
@@ -54,16 +45,51 @@ export default function HomePage() {
         </div>
 
         <div className="hero-right">
-          <div className="hero-visual">
-            <img src={heroImage} alt="Kavya Sree Maniga portrait" />
-          </div>
-          <div className="cloud-badge-row">
-            {["GCP", "AWS", "Azure"].map((cloud) => (
-              <div key={cloud} className="cloud-badge">
-                <span className="cb-label">Cloud</span>
-                <span className="cb-value">{cloud}</span>
+          <div className="hero-identity-card">
+            {/* Header strip */}
+            <div className="hic-header">
+              <div className="hic-avatar">KSM</div>
+              <div>
+                <div className="hic-name">{profile.name}</div>
+                <div className="hic-role">{profile.role}</div>
               </div>
-            ))}
+            </div>
+
+            {/* Healthcare highlight */}
+            <div className="hic-spotlight">
+              <div className="hic-spotlight-label">Healthcare Specialization</div>
+              <div className="hic-spotlight-items">
+                {["Epic EHR Integration", "HIPAA / PHI Compliance", "Clinical & Claims Pipelines", "ICD-9 / ICD-10 Crosswalk"].map((item) => (
+                  <div key={item} className="hic-spotlight-item">
+                    <span className="hic-check">✓</span> {item}
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Cloud badges */}
+            <div className="hic-section-label">Multi-Cloud</div>
+            <div className="hic-clouds">
+              {[
+                { name: "GCP", sub: "Pub/Sub · Dataflow · BigQuery" },
+                { name: "AWS", sub: "Redshift · Glue · S3" },
+                { name: "Azure", sub: "ADF · Databricks · Fabric" },
+              ].map((c) => (
+                <div key={c.name} className="hic-cloud-item">
+                  <span className="hic-cloud-name">{c.name}</span>
+                  <span className="hic-cloud-sub">{c.sub}</span>
+                </div>
+              ))}
+            </div>
+
+            {/* Bottom stat row */}
+            <div className="hic-stats">
+              <div className="hic-stat"><span>6+</span> yrs exp</div>
+              <div className="hic-stat-divider" />
+              <div className="hic-stat"><span>200GB+</span> daily</div>
+              <div className="hic-stat-divider" />
+              <div className="hic-stat"><span>99%+</span> SLA</div>
+            </div>
           </div>
         </div>
       </section>
