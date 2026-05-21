@@ -16,9 +16,14 @@ export default function App() {
           <NavLink to="/projects">Projects</NavLink>
           <NavLink to="/resume">Resume</NavLink>
         </nav>
-        <Link className="action-btn" to="/resume">
+        <a
+          className="action-btn"
+          href="/Kavya_Sree_Maniga_Resume.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           View Resume
-        </Link>
+        </a>
       </header>
 
       <Routes>
