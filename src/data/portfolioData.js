@@ -7,6 +7,7 @@ export const profile = {
   email: "kavyasreede@gmail.com",
   linkedin: "https://linkedin.com/in/kavyasreede",
   github: "https://github.com/kavyasreemaniga",
+  portfolio: "https://kavyasreemaniga.github.io",
   resume: "/Kavya_Sree_Maniga_Resume.pdf",
 };
 
@@ -37,7 +38,7 @@ export const experience = [
       "Built real-time CDC pipelines using Pub/Sub and Dataflow ingesting PostgreSQL and MongoDB into BigQuery",
       "Implemented dbt transformation layer with 20+ modular models, cutting debugging time by 40%",
       "Developed Airflow DAGs from scratch achieving 99%+ pipeline SLA adherence",
-      "Integrated Claude API for AI-powered data quality and enrichment workflows",
+      "Integrated Claude API and LangGraph for AI-powered data quality and enrichment workflows",
     ],
   },
   {
@@ -111,6 +112,21 @@ export const projects = [
       "50% reduction in manual processing across 15+ regulated financial pipelines",
       "Layered transformation with governance checkpoints at each medallion tier",
       "Stakeholder-facing Power BI dashboards for Finance and Sales teams",
+    ],
+  },
+  {
+    title: "AI-Powered Data Quality Workflows",
+    category: "AI / Data Engineering",
+    featured: false,
+    description:
+      "LangGraph-orchestrated agents integrated with the Claude API to automate data quality triage, anomaly explanation, and pipeline remediation suggestions — reducing mean time to resolution for data incidents.",
+    tech: ["LangGraph", "Claude API", "Python", "Airflow", "BigQuery"],
+    github: "",
+    demo: "",
+    highlights: [
+      "LangGraph agent graph for multi-step anomaly investigation and root cause analysis",
+      "Claude API integration for natural-language incident summaries surfaced in Slack",
+      "Automated remediation suggestions reducing on-call response time",
     ],
   },
 ];
