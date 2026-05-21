@@ -1,4 +1,4 @@
-import { NavLink, Route, Routes } from "react-router-dom";
+import { Link, NavLink, Route, Routes } from "react-router-dom";
 import { profile } from "./data/portfolioData";
 import HomePage from "./pages/HomePage";
 import ProjectsPage from "./pages/ProjectsPage";
@@ -8,17 +8,17 @@ export default function App() {
   return (
     <div className="portfolio-shell">
       <header className="top-bar">
-        <NavLink className="brand" to="/">
+        <NavLink className="brand" to="/" end>
           Kavya Sree Maniga
         </NavLink>
         <nav className="nav-links">
-          <NavLink to="/">Home</NavLink>
+          <NavLink to="/" end>Home</NavLink>
           <NavLink to="/projects">Projects</NavLink>
           <NavLink to="/resume">Resume</NavLink>
         </nav>
-        <NavLink className="action-btn" to="/resume">
+        <Link className="action-btn" to="/resume">
           View Resume
-        </NavLink>
+        </Link>
       </header>
 
       <Routes>
