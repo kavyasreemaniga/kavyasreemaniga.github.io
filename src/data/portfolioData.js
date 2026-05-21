@@ -2,12 +2,20 @@ export const profile = {
   name: "Kavya Sree Maniga",
   role: "Senior Data Engineer",
   blurb:
-    "Building scalable data platforms and production pipelines across healthcare, fintech, and technology.",
-  location: "Remote, USA",
+    "6+ years engineering production data platforms across GCP, AWS, and Azure — from real-time CDC pipelines and medallion architectures to dbt transformation layers and AI-powered workflows.",
+  location: "Philadelphia, PA",
+  email: "kavyasreede@gmail.com",
   linkedin: "https://linkedin.com/in/kavyasreede",
-  github: "https://github.com/kavyasreede",
+  github: "https://github.com/kavyasreemaniga",
   resume: "/resume.pdf",
 };
+
+export const stats = [
+  { value: "6+", label: "Years experience" },
+  { value: "3", label: "Cloud platforms" },
+  { value: "200GB+", label: "Daily data processed" },
+  { value: "99%+", label: "Pipeline SLA" },
+];
 
 export const techStack = [
   { category: "Languages", items: ["Python", "SQL", "Scala", "PySpark", "PowerShell"] },
@@ -22,56 +30,57 @@ export const experience = [
   {
     title: "Senior Data Engineer",
     company: "Digimarc",
-    period: "Apr 2024 - Present",
-    location: "Remote, USA",
+    period: "Apr 2024 – Present",
+    location: "OR, USA",
     highlights: [
-      "Architected end-to-end GCP data platform migration reducing pipeline processing time by 35%",
+      "Architected end-to-end GCP data platform migration, reducing pipeline processing time by 35%",
       "Built real-time CDC pipelines using Pub/Sub and Dataflow ingesting PostgreSQL and MongoDB into BigQuery",
-      "Implemented dbt transformation layer with 20+ modular models, reducing debugging time by 40%",
+      "Implemented dbt transformation layer with 20+ modular models, cutting debugging time by 40%",
       "Developed Airflow DAGs from scratch achieving 99%+ pipeline SLA adherence",
-      "Integrated Claude API and LangGraph for AI-powered data workflows",
+      "Integrated Claude API and LangGraph for AI-powered data quality and enrichment workflows",
     ],
   },
   {
     title: "Data Engineer",
     company: "Wells Fargo",
-    period: "Nov 2022 - Dec 2023",
+    period: "Nov 2022 – Dec 2023",
     location: "MD, USA",
     highlights: [
-      "Designed Medallion architecture (Bronze/Silver/Gold) in Azure Data Lakehouse",
-      "Built ETL/ELT pipelines using Azure Data Factory, PySpark, and Databricks",
+      "Designed Medallion architecture (Bronze/Silver/Gold) in Azure Data Lakehouse for regulated finance data",
+      "Built ETL/ELT pipelines using Azure Data Factory, PySpark, and Databricks at enterprise scale",
       "Reduced manual data processing time by 50% across 15+ regulated financial pipelines",
-      "Delivered Power BI dashboards integrated with Microsoft Fabric for Finance and Sales teams",
+      "Delivered Power BI dashboards integrated with Microsoft Fabric for Finance and Sales stakeholders",
     ],
   },
   {
     title: "Data Engineer",
     company: "HCLTech",
-    period: "Nov 2018 - Dec 2021",
+    period: "Nov 2018 – Dec 2021",
     location: "India",
     highlights: [
-      "Led end-to-end migration of clinical and claims data to AWS Redshift processing 200GB+ daily",
-      "Integrated Epic EHR data reducing clinical reporting latency by 40%",
-      "Enforced HIPAA compliance through IAM, RBAC, encryption, and audit-ready data lineage",
-      "Built Tableau and Power BI dashboards for provider metrics and patient outcomes reporting",
+      "Led end-to-end migration of clinical and claims data to AWS Redshift, processing 200GB+ daily",
+      "Integrated Epic EHR data pipelines, reducing clinical reporting latency by 40%",
+      "Enforced HIPAA compliance through IAM policies, RBAC, encryption, and audit-ready data lineage",
+      "Built Tableau and Power BI dashboards for provider performance metrics and patient outcomes reporting",
     ],
   },
 ];
 
 export const projects = [
   {
-    title: "Healthcare Analytics Platform",
-    category: "Data Engineering",
+    title: "Healthcare Analytics dbt Platform",
+    category: "Analytics Engineering",
     featured: true,
     description:
-      "End-to-end data pipeline processing Hospital Readmissions and Medicare Claims data with medallion architecture, dbt testing, and Airflow orchestration.",
+      "Production-grade healthcare analytics pipeline using Synthea FHIR R4 and CMS SynPUF data. Implements Medallion architecture in Snowflake with dbt, SCD Type 2 patient spine, ICD-9/ICD-10 crosswalk handling, and data contracts — designed to demonstrate senior-level patterns end-to-end.",
     tech: ["dbt", "Snowflake", "Airflow", "Python", "GitHub Actions", "Streamlit"],
-    github: "https://github.com/kavyasreede/healthcare-analytics-platform",
+    github: "https://github.com/kavyasreemaniga/healthcare-analytics-dbt",
     demo: "",
     highlights: [
-      "20+ dbt models with automated quality tests and source freshness checks",
-      "CI/CD: SQLFluff linting on PRs, full dbt build on merge to main",
-      "Streamlit dashboard for readmission rates and cost analytics",
+      "Patient spine with SCD Type 2 history tracking and ICD-9/ICD-10 crosswalk normalization",
+      "25+ dbt models with source freshness checks, schema tests, and data contracts",
+      "CI/CD: SQLFluff linting on PRs, full dbt build on merge via GitHub Actions",
+      "Streamlit dashboard for readmission rates, cost analytics, and population health KPIs",
     ],
   },
   {
@@ -79,14 +88,14 @@ export const projects = [
     category: "Streaming Data",
     featured: false,
     description:
-      "Real-time CDC ingestion platform for PostgreSQL and MongoDB using Pub/Sub + Dataflow into BigQuery, designed for low-latency analytics.",
+      "Real-time Change Data Capture platform ingesting PostgreSQL and MongoDB operational data via Pub/Sub and Dataflow into BigQuery. Built for low-latency analytics with Terraform-managed infrastructure and standardized IaC patterns.",
     tech: ["GCP", "Pub/Sub", "Dataflow", "BigQuery", "Terraform"],
     github: "",
     demo: "",
     highlights: [
-      "Built near real-time ingestion for operational datasets with scalable throughput",
-      "Reduced downstream processing time by 35% through modernized architecture",
-      "Established standardized cloud infrastructure patterns with IaC",
+      "Near real-time ingestion for high-throughput operational datasets",
+      "Reduced downstream processing time by 35% through modernized streaming architecture",
+      "Standardized cloud infrastructure with reusable Terraform modules",
     ],
   },
   {
@@ -94,14 +103,29 @@ export const projects = [
     category: "Analytics Engineering",
     featured: false,
     description:
-      "Designed Bronze/Silver/Gold data flows in Azure ecosystem to support regulatory reporting and business analytics use cases.",
+      "Bronze/Silver/Gold data flows in the Azure ecosystem supporting regulatory reporting and business analytics for a major financial institution. Reduced manual effort by 50% across 15+ pipelines with layered governance and stakeholder-facing dashboards.",
     tech: ["Azure Data Factory", "PySpark", "Databricks", "Power BI", "Microsoft Fabric"],
     github: "",
     demo: "",
     highlights: [
-      "Cut manual processing effort by 50% across 15+ financial pipelines",
-      "Improved trust in reporting with layered transformation and governance",
-      "Delivered stakeholder-facing dashboards for finance and sales teams",
+      "50% reduction in manual processing across 15+ regulated financial pipelines",
+      "Layered transformation with governance checkpoints at each medallion tier",
+      "Stakeholder-facing Power BI dashboards for Finance and Sales teams",
+    ],
+  },
+  {
+    title: "AI-Powered Data Quality Workflows",
+    category: "AI / Data Engineering",
+    featured: false,
+    description:
+      "LangGraph-orchestrated agents integrated with the Claude API to automate data quality triage, anomaly explanation, and pipeline remediation suggestions — reducing mean time to resolution for data incidents.",
+    tech: ["LangGraph", "Claude API", "Python", "Airflow", "BigQuery"],
+    github: "",
+    demo: "",
+    highlights: [
+      "LangGraph agent graph for multi-step anomaly investigation and root cause analysis",
+      "Claude API integration for natural-language incident summaries surfaced in Slack",
+      "Automated remediation suggestions reducing on-call response time",
     ],
   },
 ];

@@ -1,170 +1,148 @@
-import { ExternalLink, GithubIcon, Search } from "lucide-react";
-import { useMemo, useState } from "react";
+import { ExternalLink, Github, Search } from "lucide-react";
+import { useState } from "react";
 import { projects } from "../data/portfolioData";
+
+const ALL = "All";
 
 export default function ProjectsPage() {
   const [query, setQuery] = useState("");
-  const [activeFilter, setActiveFilter] = useState("All Systems");
+  const [activeFilter, setActiveFilter] = useState(ALL);
 
-  const filters = useMemo(() => {
-    const categories = projects.map((project) => project.category);
-    const uniqueCategories = [...new Set(categories)];
-    return ["All Systems", ...uniqueCategories];
-  }, []);
+  const categories = [ALL, ...Array.from(new Set(projects.map((p) => p.category)))];
 
-  const filteredProjects = useMemo(() => {
-    return projects.filter((project) => {
-      const passesFilter =
-        activeFilter === "All Systems" || project.category === activeFilter;
+  const filtered = projects.filter((p) => {
+    const matchesFilter = activeFilter === ALL || p.category === activeFilter;
+    const q = query.toLowerCase();
+    const matchesQuery =
+      !q ||
+      p.title.toLowerCase().includes(q) ||
+      p.description.toLowerCase().includes(q) ||
+      p.tech.some((t) => t.toLowerCase().includes(q));
+    return matchesFilter && matchesQuery;
+  });
 
-      const haystack = `${project.title} ${project.description} ${project.tech.join(" ")}`.toLowerCase();
-      const passesQuery = haystack.includes(query.toLowerCase());
-      return passesFilter && passesQuery;
-    });
-  }, [activeFilter, query]);
-
-  const featuredProject = filteredProjects.find((project) => project.featured);
-  const secondaryProjects = filteredProjects.filter((project) => !project.featured);
+  const featured = filtered.find((p) => p.featured);
+  const rest = filtered.filter((p) => !p.featured);
 
   return (
-    <main className="page-wrap">
-      <section className="section">
-        <div className="section-head section-head-stack">
-          <div>
-            <p>Projects Archive</p>
-            <h2>Intelligence Archive</h2>
-          </div>
-        </div>
+    <main className="page-wrap" style={{ paddingTop: 40, paddingBottom: 60 }}>
+      <div className="section-head" style={{ marginBottom: 24 }}>
+        <p>Portfolio</p>
+        <h2>Projects</h2>
+      </div>
 
-        <div className="search-row">
-          <Search size={16} />
-          <input
-            value={query}
-            onChange={(event) => setQuery(event.target.value)}
-            placeholder="Search tech stack, project title, or architecture..."
-          />
-        </div>
+      {/* Search */}
+      <div className="search-row">
+        <Search size={16} />
+        <input
+          type="text"
+          placeholder="Search by name, tech, or description…"
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+        />
+      </div>
 
-        <div className="filter-row">
-          {filters.map((filter) => (
-            <button
-              key={filter}
-              className={filter === activeFilter ? "chip active" : "chip"}
-              type="button"
-              onClick={() => setActiveFilter(filter)}
-            >
-              {filter}
-            </button>
+      {/* Filters */}
+      <div className="filter-row">
+        {categories.map((cat) => (
+          <button
+            key={cat}
+            className={`chip${activeFilter === cat ? " active" : ""}`}
+            onClick={() => setActiveFilter(cat)}
+          >
+            {cat}
+          </button>
+        ))}
+      </div>
+
+      {filtered.length === 0 && (
+        <p className="muted" style={{ marginTop: 32 }}>No projects match your search.</p>
+      )}
+
+      {/* Featured */}
+      {featured && (
+        <div style={{ marginBottom: 14 }}>
+          <article className="project-card featured-card">
+            <div className="project-top">
+              <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+                <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                  <span className="category-chip">{featured.category}</span>
+                  <span
+                    style={{
+                      fontSize: 11,
+                      fontWeight: 600,
+                      letterSpacing: "0.08em",
+                      textTransform: "uppercase",
+                      color: "#2d6a4f",
+                      background: "#d8f3dc",
+                      border: "1px solid #b7dfc9",
+                      borderRadius: 999,
+                      padding: "3px 10px",
+                    }}
+                  >
+                    Featured
+                  </span>
+                </div>
+                <h3>{featured.title}</h3>
+              </div>
+              <div className="project-links">
+                {featured.github && (
+                  <a href={featured.github} target="_blank" rel="noopener noreferrer">
+                    <Github size={16} /> GitHub
+                  </a>
+                )}
+                {featured.demo && (
+                  <a href={featured.demo} target="_blank" rel="noopener noreferrer">
+                    <ExternalLink size={16} /> Demo
+                  </a>
+                )}
+              </div>
+            </div>
+            <p>{featured.description}</p>
+            <ul>
+              {featured.highlights.map((h) => <li key={h}>{h}</li>)}
+            </ul>
+            <div className="pill-row">
+              {featured.tech.map((t) => <span key={t} className="pill">{t}</span>)}
+            </div>
+          </article>
+        </div>
+      )}
+
+      {/* Rest */}
+      {rest.length > 0 && (
+        <div className="project-grid">
+          {rest.map((p) => (
+            <article key={p.title} className="project-card">
+              <div className="project-top">
+                <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+                  <span className="category-chip">{p.category}</span>
+                  <h3>{p.title}</h3>
+                </div>
+                <div className="project-links">
+                  {p.github && (
+                    <a href={p.github} target="_blank" rel="noopener noreferrer">
+                      <Github size={16} />
+                    </a>
+                  )}
+                  {p.demo && (
+                    <a href={p.demo} target="_blank" rel="noopener noreferrer">
+                      <ExternalLink size={16} />
+                    </a>
+                  )}
+                </div>
+              </div>
+              <p>{p.description}</p>
+              <ul>
+                {p.highlights.map((h) => <li key={h}>{h}</li>)}
+              </ul>
+              <div className="pill-row" style={{ marginTop: "auto" }}>
+                {p.tech.map((t) => <span key={t} className="pill">{t}</span>)}
+              </div>
+            </article>
           ))}
         </div>
-
-        {filteredProjects.length === 0 && (
-          <article className="project-card">
-            <h3>No matches found</h3>
-            <p>Try a different search phrase or switch back to &quot;All Systems&quot;.</p>
-          </article>
-        )}
-
-        {filteredProjects.length > 0 && (
-          <div className="project-grid bento-grid">
-            {featuredProject && (
-              <article key={featuredProject.title} className="project-card featured-card">
-                <div className="project-top">
-                  <div>
-                    <p className="eyebrow">{featuredProject.category}</p>
-                    <h3>{featuredProject.title}</h3>
-                  </div>
-                  <div className="project-links">
-                    {featuredProject.github && (
-                      <a
-                        href={featuredProject.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        referrerPolicy="no-referrer"
-                        aria-label="GitHub repo"
-                      >
-                        <GithubIcon size={17} />
-                      </a>
-                    )}
-                    {featuredProject.demo && (
-                      <a
-                        href={featuredProject.demo}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        referrerPolicy="no-referrer"
-                        aria-label="Live demo"
-                      >
-                        <ExternalLink size={17} />
-                      </a>
-                    )}
-                  </div>
-                </div>
-                <p>{featuredProject.description}</p>
-                <ul>
-                  {featuredProject.highlights.map((point) => (
-                    <li key={point}>{point}</li>
-                  ))}
-                </ul>
-                <div className="pill-row">
-                  {featuredProject.tech.map((tool) => (
-                    <span key={tool} className="pill">
-                      {tool}
-                    </span>
-                  ))}
-                </div>
-              </article>
-            )}
-
-            {secondaryProjects.map((project) => (
-              <article key={project.title} className="project-card">
-                <div className="project-top">
-                  <div>
-                    <p className="eyebrow">{project.category}</p>
-                    <h3>{project.title}</h3>
-                  </div>
-                  <div className="project-links">
-                    {project.github && (
-                      <a
-                        href={project.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        referrerPolicy="no-referrer"
-                        aria-label="GitHub repo"
-                      >
-                        <GithubIcon size={17} />
-                      </a>
-                    )}
-                    {project.demo && (
-                      <a
-                        href={project.demo}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        referrerPolicy="no-referrer"
-                        aria-label="Live demo"
-                      >
-                        <ExternalLink size={17} />
-                      </a>
-                    )}
-                  </div>
-                </div>
-                <p>{project.description}</p>
-                <ul>
-                  {project.highlights.map((point) => (
-                    <li key={point}>{point}</li>
-                  ))}
-                </ul>
-                <div className="pill-row">
-                  {project.tech.map((tool) => (
-                    <span key={tool} className="pill">
-                      {tool}
-                    </span>
-                  ))}
-                </div>
-              </article>
-            ))}
-          </div>
-        )}
-      </section>
+      )}
     </main>
   );
 }

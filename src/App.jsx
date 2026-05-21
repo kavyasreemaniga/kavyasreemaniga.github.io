@@ -9,7 +9,7 @@ export default function App() {
     <div className="portfolio-shell">
       <header className="top-bar">
         <NavLink className="brand" to="/">
-          KSM
+          Kavya Sree Maniga
         </NavLink>
         <nav className="nav-links">
           <NavLink to="/">Home</NavLink>
@@ -28,8 +28,17 @@ export default function App() {
       </Routes>
 
       <footer className="footer">
-        <p>© 2026 Kavya Sree Maniga</p>
-        <p>Portfolio prototype track</p>
+        <p>© 2026 Kavya Sree Maniga · Senior Data Engineer</p>
+        <p>
+          <a
+            href={profile.github}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ color: "var(--muted)" }}
+          >
+            GitHub ↗
+          </a>
+        </p>
       </footer>
     </div>
   );
