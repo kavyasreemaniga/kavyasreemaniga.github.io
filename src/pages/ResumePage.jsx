@@ -58,14 +58,7 @@ export default function ResumePage() {
             className="solid-btn no-print"
             style={{ justifyContent: "center" }}
           >
-            <Download size={16} /> Download PDF
-          </a>
-          <a
-            href={`mailto:${profile.email}`}
-            className="ghost-btn no-print"
-            style={{ justifyContent: "center" }}
-          >
-            <Mail size={16} /> Get in Touch
+            <Download size={16} /> Download Resume
           </a>
           <div
             style={{
